@@ -27,7 +27,7 @@ export default function Home(props: HomeProps) {
         <Head>
           <title>Inicio / moveit</title>
         </Head>
-        level
+
         <ExperienceBar />
         <CountdownProvider>
           <section>

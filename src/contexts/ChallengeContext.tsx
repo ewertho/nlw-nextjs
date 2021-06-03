@@ -36,12 +36,12 @@ export function ChallengeProvider({
   children,
   ...rest
 }: ChallengeProviderProps) {
-  const [level, setLevel] = useState(rest.level || 1);
+  const [level, setLevel] = useState(rest.level ?? 1);
   const [currentExperience, setCurrentExperience] = useState(
-    rest.currentExperience || 1
+    rest.currentExperience ?? 1
   );
   const [challengeCompleted, setChallengeCompleted] = useState(
-    rest.challengeCompleted || 0
+    rest.challengeCompleted ?? 0
   );
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -52,6 +52,7 @@ export function ChallengeProvider({
     Notification.requestPermission();
   }, []);
 
+  //salvando cookies no navegador
   useEffect(() => {
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
@@ -90,7 +91,7 @@ export function ChallengeProvider({
 
     const { amount } = activeChallenge;
 
-    let finalExperience = currentExperience * amount;
+    let finalExperience = currentExperience + amount;
 
     if (finalExperience > experienceToNextLevel) {
       finalExperience = finalExperience - experienceToNextLevel;
@@ -101,7 +102,6 @@ export function ChallengeProvider({
     setActiveChallenge(null);
     setChallengeCompleted(challengeCompleted + 1);
   }
-  console.log(rest.challengeCompleted);
 
   return (
     <ChallengeContext.Provider
