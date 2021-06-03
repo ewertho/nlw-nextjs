@@ -41,11 +41,16 @@
   margin-top: 0.25rem;
 }
 
-.container button {
+.container .btn {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
   background: transparent;
   border: 0;
   font-size: 0;
+}
+
+.btnprofile {
+  background-color: blueviolet;
+  color: aliceblue;
 }
